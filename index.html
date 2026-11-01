@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Naufal | Praktikum Cloud Computing</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+        .wrap { width: 100%; max-width: 720px; }
+        .badge {
+            display: inline-block;
+            background: #22c55e;
+            color: #052e16;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 999px;
+            letter-spacing: .5px;
+        }
+        header { margin-bottom: 28px; }
+        h1 { font-size: 36px; margin: 14px 0 6px; color: #fff; }
+        .sub { color: #94a3b8; font-size: 16px; }
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-bottom: 16px;
+        }
+        .card h2 { font-size: 15px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+        table { width: 100%; border-collapse: collapse; font-size: 15px; }
+        td { padding: 6px 0; vertical-align: top; }
+        td:first-child { color: #94a3b8; width: 150px; }
+        ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+        li { background: #0f172a; border: 1px solid #334155; padding: 6px 12px; border-radius: 8px; font-size: 14px; }
+        .info { font-family: Consolas, monospace; font-size: 14px; color: #a5f3fc; }
+        button {
+            margin-top: 6px;
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        button:hover { background: #7dd3fc; }
+        #pesan { margin-top: 12px; color: #86efac; min-height: 20px; }
+        footer { text-align: center; color: #64748b; font-size: 13px; margin-top: 24px; }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <span class="badge">VERSI 1.0</span>
+            <h1>Halo, saya Naufal 👋</h1>
+            <p class="sub">Website statis ini di-deploy di Vercel melalui GitHub.</p>
+        </header>
+
+        <section class="card">
+            <h2>Identitas</h2>
+            <table>
+                <tr><td>Nama</td><td>Naufal</td></tr>
+                <tr><td>NIM</td><td>102042400142</td></tr>
+                <tr><td>Program Studi</td><td>Sistem Informasi</td></tr>
+                <tr><td>Kampus</td><td>Telkom University</td></tr>
+                <tr><td>Mata Kuliah</td><td>Komputasi Awan (Cloud Computing)</td></tr>
+            </table>
+        </section>
+
+        <section class="card">
+            <h2>Teknologi yang Dipakai</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>GitHub</li>
+                <li>Git</li>
+                <li>Vercel</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Info Server</h2>
+            <p class="info">Host: <span id="host"></span></p>
+            <p class="info">Waktu: <span id="waktu"></span></p>
+            <button onclick="tampilPesan()">Cek Status</button>
+            <p id="pesan"></p>
+        </section>
+
+        <footer>Modul 1 – Web Server on Cloud &middot; Praktikum Cloud Computing</footer>
+    </div>
+
+    <script>
+        document.getElementById("host").innerText = window.location.hostname || "lokal (file)";
+
+        function updateWaktu() {
+            document.getElementById("waktu").innerText = new Date().toLocaleString("id-ID");
+        }
+        setInterval(updateWaktu, 1000);
+        updateWaktu();
+
+        function tampilPesan() {
+            const host = window.location.hostname;
+            document.getElementById("pesan").innerText = host.includes("vercel.app")
+                ? "✅ Website sedang berjalan online di Vercel!"
+                : "💻 Website sedang berjalan secara lokal.";
+        }
+    </script>
+</body>
+</html>
